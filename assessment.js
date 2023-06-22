@@ -1,25 +1,37 @@
 'use strict';
 const userNameInput = document.getElementById('user-name');
 const assessmentButton = document.getElementById('assessment');
-const resultDivision = document.getElementById('result-area');
-const tweetDivision = document.getElementById('tweet-area');
+const resultDivided = document.getElementById('result-area');
+const tweetDivided = document.getElementById('tweet-area');
 
 assessmentButton.onclick = () => {
   const userName = userNameInput.value;
   if (userName.length === 0) {
     return;
   }
-resultDivision.innerText = '';
-const header = document.createElement('h3');
-header.innerText = '診断結果';
-  resultDivision.appendChild(header);
+
+resultDivided.innerText = "";
+
+const headerDivided = document.createElement('div');
+headerDivided.setAttribute('class', 'card-header');
+headerDivided.innerText = '診断結果';
+
+const bodyDivided= document.createElement('div');
+bodyDivided.setAttribute('class', 'card-body');
 
 const paragraph = document.createElement('p');
+paragraph.setAttribute('class','card-text');
 const result = assessment(userName);
 paragraph.innerText = result;
-resultDivision.appendChild(paragraph);
+bodyDivided.appendChild(paragraph);
 
-tweetDivision.innerText = '';
+resultDivided.setAttribute('class', 'card');
+resultDivided.setAttribute('style', 'max-width: 700px');
+
+resultDivided.appendChild(headerDivided);
+resultDivided.appendChild(bodyDivided);
+
+tweetDivided.innerText = '';
 const anchor = document.createElement('a');
 const hrefValue = 
   'https://twitter.com/intent/tweet?button_hashtag=' +
@@ -30,11 +42,11 @@ const hrefValue =
   anchor.setAttribute('class', 'twitter-hashtag-button');
   anchor.setAttribute('data-text', result);
   anchor.innerText = 'Tweet #あなたのいいところ';
-  tweetDivision.appendChild(anchor);
+  tweetDivided.appendChild(anchor);
 
   const script = document.createElement('script');
   script.setAttribute('src', 'https://platform.twitter.com/widgets.js');
-  tweetDivision.appendChild(script);
+  tweetDivided.appendChild(script);
 };
 
 const answers = [
