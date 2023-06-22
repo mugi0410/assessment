@@ -1,6 +1,6 @@
 body {
-    background-color: #04a6eb;
-    color: #fdffff;
+    background-color: #294d62;
+    color: #ffffffd1;
     width: 500px;
     margin-right: auto;
     margin-left: auto;
@@ -12,4 +12,7 @@ button {
 }
 input {
     height: 24px;
+}
+h3 {
+    text-align: left;
 }
